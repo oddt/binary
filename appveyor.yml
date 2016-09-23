@@ -86,7 +86,9 @@ test_script:
         --exclude-module tcl ^
         --exclude-module Tkinter ^
         --exclude-module rdkit ^
-        -c -y -n oddt_cli --onefile %CONDA_ROOT%\Scripts\oddt_cli'
+        --strip ^
+        --nowindow ^
+        -y -n oddt_cli --onefile %CONDA_ROOT%\Scripts\oddt_cli'
   - C:\projects\binary\dist\oddt_cli.exe --help
 artifacts:
   # Archive the generated conda package in the ci.appveyor.com build report.
