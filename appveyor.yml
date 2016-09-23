@@ -62,6 +62,7 @@ install:
     - pip install --no-deps git+https://github.com/oddt/oddt.git
     - pip install git+https://github.com/pyinstaller/pyinstaller.git
     # - pip install git+https://github.com/ajtulloch/sklearn-compiledtrees.git
+    - curl -L -o upx.zip http://libgd.blob.core.windows.net/upx/upx391w.zip && 7z e upx.zip *.exe -r
 
 
 build: false
@@ -86,6 +87,7 @@ test_script:
         --exclude-module tcl ^
         --exclude-module Tkinter ^
         --exclude-module rdkit ^
+        --upx-dir . ^
         --strip ^
         --nowindow ^
         -y -n oddt_cli --onefile %CONDA_ROOT%\Scripts\oddt_cli'
