@@ -59,8 +59,7 @@ install:
     # temp
     - conda install -q numpy scipy scikit-learn
     - pip install --no-deps git+https://github.com/oddt/oddt.git
-    # - pip install git+https://github.com/pyinstaller/pyinstaller.git
-    - pip install pyinstaller
+    - pip install git+https://github.com/pyinstaller/pyinstaller.git
     # - pip install git+https://github.com/ajtulloch/sklearn-compiledtrees.git
 
 
@@ -68,7 +67,6 @@ build: false
 
 test_script:
   - 'pyinstaller --clean ^
-        --hidden-import=six ^
         --hidden-import="sklearn.tree._utils" ^
         --hidden-import=compiledtrees ^
         --runtime-hook pyi_rth_obdata.py ^
