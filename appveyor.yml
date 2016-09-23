@@ -73,13 +73,6 @@ test_script:
         --hidden-import=six ^
         --hidden-import=compiledtrees ^
         --runtime-hook pyi_rth_obdata.py ^
-        --add-binary "%CONDA_ROOT%\Library\bin\msvcr90.dll;." ^
-        --add-binary "%CONDA_ROOT%\Library\bin\mkl_avx.dll;." ^
-        --add-binary "%CONDA_ROOT%\Library\bin\mkl_def.dll;." ^
-        --add-binary "%CONDA_ROOT%\Library\bin\zlib.dll;." ^
-        --add-binary "%CONDA_ROOT%\Library\bin\libxml2.dll;." ^
-        --add-binary "%CONDA_ROOT%\Library\bin\iconv.dll;." ^
-        --add-binary "%CONDA_ROOT%\Library\bin\charset.dll;." ^
         --add-binary "%CONDA_ROOT%\Library\bin\formats_*.obf;." ^
         --add-binary "%CONDA_ROOT%\Library\bin\plugin_*.obf;." ^
         --add-data "%CONDA_ROOT%\share\openbabel\*;data" ^
@@ -90,7 +83,7 @@ test_script:
         --upx-dir . ^
         --nowindow ^
         -y -n oddt_cli --onefile %CONDA_ROOT%\Scripts\oddt_cli'
-  - C:\projects\binary\dist\oddt_cli.exe --help
+  - C:\projects\binary\dist\oddt_cli.exe --help      #binary "%CONDA_ROOT%\Library\bin\charset.dll;." ^
 artifacts:
   # Archive the generated conda package in the ci.appveyor.com build report.
   - path: .\dist\oddt_cli.exe
