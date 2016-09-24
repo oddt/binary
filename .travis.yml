@@ -11,13 +11,13 @@ before_install:
     - wget http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh
     - bash miniconda.sh -b -p $HOME/miniconda
     - export PATH="$HOME/miniconda/bin:$PATH"
-    - export CONDA_ROOT="$HOME/miniconda/envs/oddt_env/"
     - conda config --set always_yes yes
     - conda update --yes conda
     - conda install --yes conda-build anaconda-client
     - conda create --yes --name oddt_env python=$TRAVIS_PYTHON_VERSION
     # - conda env update --name oddt_env --file environment.yml
     - source activate oddt_env
+    - export CONDA_ROOT="$HOME/miniconda/envs/oddt_env/"
     - conda install -q six
     - conda install -q -c mwojcikowski openbabel
     - conda install -q -c rdkit rdkit
@@ -44,7 +44,7 @@ install:
         --add-data=${CONDA_ROOT}/lib/python2.7/site-packages/oddt/scoring/functions/RFScore/*.csv:oddt/scoring/functions/RFScore/ \
         --add-data=${CONDA_ROOT}/lib/python2.7/site-packages/oddt/scoring/functions/NNScore/*.csv:oddt/scoring/functions/NNScore/ \
         --nowindow \
-        --strip \
         -n oddt_cli --onefile ${CONDA_ROOT}/bin/oddt_cli`
+        --strip \
 script:
     - dist/oddt_cli --help
