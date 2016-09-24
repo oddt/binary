@@ -17,7 +17,6 @@ before_install:
     - conda create --yes --name oddt_env python=$TRAVIS_PYTHON_VERSION
     # - conda env update --name oddt_env --file environment.yml
     - source activate oddt_env
-    - export CONDA_ROOT="$HOME/miniconda/envs/oddt_env/"
     - conda install -q six
     - conda install -q -c mwojcikowski openbabel
     - conda install -q -c rdkit rdkit
@@ -28,23 +27,7 @@ before_install:
     - pip install git+https://github.com/ajtulloch/sklearn-compiledtrees.git
 
 install:
-    - pyinstaller \
-        --clean \
-        --hidden-import=six \
-        --hidden-import=sklearn.tree._utils \
-        --hidden-import=compiledtrees \
-        --exclude-module tcl \
-        --exclude-module Tkinter \
-        --add-data '${CONDA_ROOT}/share/openbabel/2.3.90/*:data/' \
-        --add-binary '${CONDA_ROOT}/lib/openbabel/2.3.90/*.so:.' \
-        --add-binary '${CONDA_ROOT}/lib/libinchi.so.0:.' \
-        --add-binary '${CONDA_ROOT}/lib/libmkl_avx.so:.' \
-        --add-binary '${CONDA_ROOT}/lib/libmkl_def.so:.' \
-        --runtime-hook pyi_rth_obdata.py \
-        --add-data=${CONDA_ROOT}/lib/python2.7/site-packages/oddt/scoring/functions/RFScore/*.csv:oddt/scoring/functions/RFScore/ \
-        --add-data=${CONDA_ROOT}/lib/python2.7/site-packages/oddt/scoring/functions/NNScore/*.csv:oddt/scoring/functions/NNScore/ \
-        --nowindow \
-        --strip \
-        -n oddt_cli --onefile ${CONDA_ROOT}/bin/oddt_cli
+    - ./pyinstaller_linux.sh
+
 script:
     - dist/oddt_cli --help
