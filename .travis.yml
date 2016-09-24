@@ -28,6 +28,7 @@ before_install:
 
 install:
     - ./pyinstaller_linux.sh
+    - ls -lnh dist/
 
 script:
-    - dist/oddt_cli --help
+    - dist/oddt_cli --help; exit 0

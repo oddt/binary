@@ -7,6 +7,7 @@ pyinstaller \
     --hidden-import=compiledtrees \
     --exclude-module tcl \
     --exclude-module Tkinter \
+    --exclude-module rdkit \
     --add-data "${CONDA_ROOT}/share/openbabel/2.4.0/*:data/" \
     --add-binary "${CONDA_ROOT}/lib/openbabel/2.4.0/*.so:." \
     --add-binary "${CONDA_ROOT}/lib/libinchi.so.0:." \
@@ -16,4 +17,5 @@ pyinstaller \
     --add-data=${CONDA_ROOT}/lib/python2.7/site-packages/oddt/scoring/functions/RFScore/*.csv:oddt/scoring/functions/RFScore/ \
     --add-data=${CONDA_ROOT}/lib/python2.7/site-packages/oddt/scoring/functions/NNScore/*.csv:oddt/scoring/functions/NNScore/ \
     --nowindow \
+    --strip \
     -n oddt_cli --onefile ${CONDA_ROOT}/bin/oddt_cli
