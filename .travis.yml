@@ -11,7 +11,7 @@ before_install:
     - conda update --yes conda
     - conda install --yes conda-build anaconda-client
     - conda create --yes --name oddt_env python=$TRAVIS_PYTHON_VERSION
-    - conda env update --name oddt_env --file environment.yml
+    # - conda env update --name oddt_env --file environment.yml
     - source activate oddt_env
     - conda install -q six
     - conda install -q -c mwojcikowski openbabel
