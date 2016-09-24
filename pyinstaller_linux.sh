@@ -17,4 +17,5 @@ pyinstaller \
     --add-data=${CONDA_ROOT}/lib/python2.7/site-packages/oddt/scoring/functions/RFScore/*.csv:oddt/scoring/functions/RFScore/ \
     --add-data=${CONDA_ROOT}/lib/python2.7/site-packages/oddt/scoring/functions/NNScore/*.csv:oddt/scoring/functions/NNScore/ \
     --nowindow \
+    --strip \
     -n oddt_cli --onefile ${CONDA_ROOT}/bin/oddt_cli
