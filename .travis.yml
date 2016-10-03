@@ -21,7 +21,7 @@ before_install:
     - conda install -q -c mwojcikowski openbabel
     - conda install -q -c rdkit rdkit
     # temp
-    - conda install -q nomkl numpy scipy scikit-learn joblib
+    - conda install -q numpy scipy scikit-learn joblib
     - pip install --no-deps git+https://github.com/oddt/oddt.git
     - pip install git+https://github.com/pyinstaller/pyinstaller.git
     - pip install git+https://github.com/ajtulloch/sklearn-compiledtrees.git
