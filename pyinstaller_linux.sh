@@ -3,7 +3,7 @@ export CONDA_ROOT="$HOME/miniconda/envs/oddt_env/"
 
 if [ `uname` == Darwin ]; then
     SO_EXT='dylib'
-    EXTRA_OPTS="--add-binary /opt/X11/lib/libcairo.dylib"
+    EXTRA_OPTS='--add-binary "/opt/X11/lib/libcairo.dylib"'
 else
     SO_EXT='so'
     EXTRA_OPTS=''
