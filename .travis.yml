@@ -3,6 +3,9 @@ language: c
 os:
     - osx
     - linux
+matrix:
+  allow_failures:
+    - os: osx
 env:
   matrix:
   - CONDA_PY=2.7
