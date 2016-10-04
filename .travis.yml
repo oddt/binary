@@ -1,10 +1,11 @@
 sudo: false
-language: python
+language: c
 os:
     - osx
     - linux
-python:
-    - '2.7'
+env:
+  matrix:
+  - CONDA_PY=2.7
 addons:
   apt:
     packages:
@@ -18,7 +19,7 @@ before_install:
     - conda config --set always_yes yes
     - conda update --yes conda
     - conda install --yes conda-build anaconda-client
-    - conda create --yes --name oddt_env python=$TRAVIS_PYTHON_VERSION
+    - conda create --yes --name oddt_env python=$CONDA_PY
     # - conda env update --name oddt_env --file environment.yml
     - source activate oddt_env
     - conda install -q six
