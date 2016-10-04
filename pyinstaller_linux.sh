@@ -3,8 +3,10 @@ export CONDA_ROOT="$HOME/miniconda/envs/oddt_env/"
 
 if [ `uname` == Darwin ]; then
     SO_EXT='dylib'
+    EXTRA_OPTS="--add-binary /opt/X11/lib/libcairo.dylib"
 else
     SO_EXT='so'
+    EXTRA_OPTS=''
 fi
 
 pyinstaller \
@@ -27,4 +29,5 @@ pyinstaller \
     --add-data=${CONDA_ROOT}/lib/python2.7/site-packages/oddt/scoring/functions/NNScore/*.csv:oddt/scoring/functions/NNScore/ \
     --nowindow \
     --strip \
+    $EXTRA_OPTS \
     -n oddt_cli --onefile ${CONDA_ROOT}/bin/oddt_cli
