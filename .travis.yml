@@ -1,5 +1,8 @@
 sudo: false
 language: python
+os:
+    - osx
+    - linux
 python:
     - '2.7'
 addons:
