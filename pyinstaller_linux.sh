@@ -1,5 +1,12 @@
 #!/bin/bash
 export CONDA_ROOT="$HOME/miniconda/envs/oddt_env/"
+
+if [ `uname` == Darwin ]; then
+    SO_EXT='dylib'
+else
+    SO_EXT='so'
+fi
+
 pyinstaller \
     --clean \
     --hidden-import=six \
@@ -14,7 +21,7 @@ pyinstaller \
     --add-binary "${CONDA_ROOT}/lib/openbabel/2.4.0/pdbformat.so:." \
     --add-binary "${CONDA_ROOT}/lib/openbabel/2.4.0/pdbqtformat.so:." \
     --add-binary "${CONDA_ROOT}/lib/openbabel/2.4.0/smilesformat.so:." \
-    --add-binary "${CONDA_ROOT}/lib/libinchi.so.0:." \
+    --add-binary "${CONDA_ROOT}/lib/libinchi.${SO_EXT}:." \
     --runtime-hook pyi_rth_obdata.py \
     --add-data=${CONDA_ROOT}/lib/python2.7/site-packages/oddt/scoring/functions/RFScore/*.csv:oddt/scoring/functions/RFScore/ \
     --add-data=${CONDA_ROOT}/lib/python2.7/site-packages/oddt/scoring/functions/NNScore/*.csv:oddt/scoring/functions/NNScore/ \
