@@ -35,7 +35,6 @@ before_install:
     - pip install git+https://github.com/ajtulloch/sklearn-compiledtrees.git
 
 install:
-    - ls /opt/X11/lib/ | grep cairo
     - ./pyinstaller_linux.sh
     - ls -lnh dist/
 
