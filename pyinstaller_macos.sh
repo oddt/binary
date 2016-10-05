@@ -18,5 +18,6 @@ pyinstaller \
     --add-data=${CONDA_ROOT}/lib/python2.7/site-packages/oddt/scoring/functions/NNScore/*.csv:oddt/scoring/functions/NNScore/ \
     --nowindow \
     --strip \
-    --add-binary "${CONDA_ROOT}/lib/libinchi.so:." \
+    --add-binary "${CONDA_ROOT}/lib/libinchi.dylib:." \
+    --add-binary "/opt/X11/lib/libcairo.dylib:." \
     -n oddt_cli --onefile ${CONDA_ROOT}/bin/oddt_cli
