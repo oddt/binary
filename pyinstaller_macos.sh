@@ -1,4 +1,6 @@
 #!/bin/bash
+export CONDA_ROOT="$HOME/miniconda/envs/oddt_env/"
+
 pyinstaller \
     --clean \
     --hidden-import=six \
