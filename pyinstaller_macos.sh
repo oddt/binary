@@ -21,5 +21,5 @@ pyinstaller \
     --nowindow \
     --strip \
     --add-binary "${CONDA_ROOT}/lib/libinchi.dylib:." \
-    --add-binary "/opt/X11/lib/libcairo.dylib:." \
+    --add-binary "/opt/X11/lib/libcairo.2.dylib:." \
     -n oddt_cli --onefile ${CONDA_ROOT}/bin/oddt_cli
