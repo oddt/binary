@@ -35,7 +35,6 @@ before_install:
     - pip install git+https://github.com/ajtulloch/sklearn-compiledtrees.git
 
 install:
-    - ./pyinstaller_linux.sh
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./pyinstaller_linux.sh; else ./pyinstaller_macos.sh; fi;
     - ls -lnh dist/
 
