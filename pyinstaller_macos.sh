@@ -1,8 +1,6 @@
 #!/bin/bash
 export CONDA_ROOT="$HOME/miniconda/envs/oddt_env/"
 
-find / -name "libpixman-1.0.dylib"
-
 pyinstaller \
     --clean \
     --hidden-import=six \
