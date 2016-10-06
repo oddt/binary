@@ -43,3 +43,4 @@ script:
     - dist/oddt_cli --help
     - dist/oddt_cli --toolkit ob test/test_10.mol2 -osmi
     - dist/oddt_cli --toolkit rdk test/test_10.mol2 -osmi
+    - time dist/oddt_cli --score rfscore --receptor test/test_10.mol2 test/test_10.mol2 -ocsv

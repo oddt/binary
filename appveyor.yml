@@ -89,6 +89,7 @@ test_script:
   - dist\oddt_cli.exe --help
   - dist\oddt_cli.exe --toolkit ob test\test_10.mol2 -osmi
   - dist\oddt_cli.exe --toolkit rdk test\test_10.mol2 -osmi
+  - time dist\oddt_cli.exe --score rfscore --receptor test\test_10.mol2 test\test_10.mol2 -ocsv
 artifacts:
   # Archive the generated conda package in the ci.appveyor.com build report.
   - path: .\dist\oddt_cli.exe
