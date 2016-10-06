@@ -26,4 +26,5 @@ pyinstaller \
     --add-binary "/opt/X11/lib/libfontconfig.1.dylib:." \
     --add-binary "/opt/X11/lib/libfreetype.6.dylib:." \
     --add-binary "/opt/X11/lib/llibxcb-shm.0.dylib:." \
+    --additional-hooks-dir=. \
     -n oddt_cli --onefile ${CONDA_ROOT}/bin/oddt_cli
