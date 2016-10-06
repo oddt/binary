@@ -65,7 +65,7 @@ install:
     - pip install git+https://github.com/pyinstaller/pyinstaller.git@feb0d271263ca884b91033fd588b79fadf3a3a7f
     # compiledtrees
     - set "CXX=%CONDA_ROOT%\Scripts\g++.exe"
-    - pip install git+https://github.com/ajtulloch/sklearn-compiledtrees.git
+    - pip install git+https://github.com/ajtulloch/sklearn-compiledtrees.git@windows-compilation
     - curl -L -o upx.zip http://libgd.blob.core.windows.net/upx/upx391w.zip && 7z e upx.zip *.exe -r
 
 
