@@ -24,4 +24,5 @@ pyinstaller \
     --add-binary "/opt/X11/lib/libcairo.2.dylib:." \
     --add-binary "/opt/X11/lib/libpixman-1.0.dylib:." \
     --add-binary "/opt/X11/lib/libfontconfig.1.dylib:." \
+    --add-binary "/opt/X11/lib//libfreetype.6.dylib:." \
     -n oddt_cli --onefile ${CONDA_ROOT}/bin/oddt_cli
