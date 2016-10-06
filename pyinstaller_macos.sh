@@ -36,6 +36,6 @@ pyinstaller \
     --add-binary "/opt/X11/lib/libXau.6.dylib:." \
     --add-binary "/opt/X11/lib/libXdmcp.6.dylib:." \
     --add-binary "/opt/X11/lib/libxcb.1.dylib:." \
-    --upx /usr/local/Cellar/upx/3.91_1/bin/upx \
+    --upx "/usr/local/Cellar/upx/3.91_1/bin/upx" \
     --additional-hooks-dir=. \
     -n oddt_cli --onefile ${CONDA_ROOT}/bin/oddt_cli
