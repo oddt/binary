@@ -26,7 +26,7 @@ before_install:
     - source activate oddt_env
     - conda install -q six
     - conda install -q -c mwojcikowski openbabel
-    - conda install -q -c rdkit rdkit
+    - conda install -q -c rdkit rdkit cairocffi
     # temp
     - conda install -q nomkl numpy scipy scikit-learn joblib
     - conda remove -q mkl
