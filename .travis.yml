@@ -40,4 +40,5 @@ install:
     - ls -lnh dist/
 
 script:
-    - dist/oddt_cli --help; exit 0
+    - dist/oddt_cli --help
+    - dist/oddt_cli test_10.mol2 -osmi
