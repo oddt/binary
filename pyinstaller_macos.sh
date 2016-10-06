@@ -8,9 +8,9 @@ pyinstaller \
     --hidden-import=six \
     --hidden-import=sklearn.tree._utils \
     --hidden-import=compiledtrees \
+    --hidden-import=rdkit \
     --exclude-module tcl \
     --exclude-module Tkinter \
-    --exclude-module rdkit \
     --add-data "${CONDA_ROOT}/share/openbabel/2.4.0/*:data/" \
     --add-binary "${CONDA_ROOT}/lib/openbabel/2.4.0/mdlformat.so:." \
     --add-binary "${CONDA_ROOT}/lib/openbabel/2.4.0/mol2format.so:." \
