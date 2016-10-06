@@ -60,8 +60,8 @@ install:
     # temp
     - conda install -q numpy scipy scikit-learn joblib
     - pip install --no-deps git+https://github.com/oddt/oddt.git
-    - pip install pyinstaller
-    # - pip install git+https://github.com/pyinstaller/pyinstaller.git
+    # Use commit pre-MKL
+    - pip install git+https://github.com/pyinstaller/pyinstaller.git@feb0d271263ca884b91033fd588b79fadf3a3a7f
     # - pip install git+https://github.com/ajtulloch/sklearn-compiledtrees.git
     - curl -L -o upx.zip http://libgd.blob.core.windows.net/upx/upx391w.zip && 7z e upx.zip *.exe -r
 
