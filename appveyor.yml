@@ -87,7 +87,9 @@ test_script:
         --upx-dir . ^
         --nowindow ^
         -y -n oddt_cli --onefile %CONDA_ROOT%\Scripts\oddt_cli'
-  - C:\projects\binary\dist\oddt_cli.exe --help
+  - dist\oddt_cli.exe --help
+  - dist\oddt_cli.exe --toolkit ob test\test_10.mol2 -osmi
+  - dist\oddt_cli.exe --toolkit rdk test\test_10.mol2 -osmi
 artifacts:
   # Archive the generated conda package in the ci.appveyor.com build report.
   - path: .\dist\oddt_cli.exe
