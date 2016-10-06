@@ -1,2 +1,2 @@
-from hookutils import collect_submodules
+from PyInstaller.utils.hooks import import collect_submodules
 hiddenimports = collect_submodules('sklearn')
