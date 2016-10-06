@@ -6,7 +6,6 @@ pyinstaller \
     --hidden-import=six \
     --hidden-import=sklearn.tree._utils \
     --hidden-import=compiledtrees \
-    --hidden-import=cairocffi \
     --exclude-module tcl \
     --exclude-module Tkinter \
     --exclude-module rdkit \
@@ -22,4 +21,9 @@ pyinstaller \
     --nowindow \
     --strip \
     --add-binary "${CONDA_ROOT}/lib/libinchi.0.dylib:." \
+    --add-binary "/opt/X11/lib/libcairo.2.dylib:." \
+    --add-binary "/opt/X11/lib/libpixman-1.0.dylib:." \
+    --add-binary "/opt/X11/lib/libfontconfig.1.dylib:." \
+    --add-binary "/opt/X11/lib/libfreetype.6.dylib:." \
+    --add-binary "/opt/X11/lib/llibxcb-shm.0.dylib:." \
     -n oddt_cli --onefile ${CONDA_ROOT}/bin/oddt_cli
