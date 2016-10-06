@@ -65,6 +65,7 @@ install:
     # Use commit pre-MKL
     - pip install git+https://github.com/pyinstaller/pyinstaller.git
     # Remove buggy numpy hook instead of @feb0d271263ca884b91033fd588b79fadf3a3a7f
+    - python -c "import PyInstaller;print(PyInstaller.__file__)"
     - del /F ${CONDA_PREFIX}\Lib\site-packages\PyInstaller\hooks\hook-numpy.core.py
     # compiledtrees
     # - pip install --global-option --compiler=mingw32 git+https://github.com/ajtulloch/sklearn-compiledtrees.git
