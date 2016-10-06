@@ -1,8 +1,6 @@
 #!/bin/bash
 export CONDA_ROOT="$HOME/miniconda/envs/oddt_env/"
 
-pyi-bindepend /opt/X11/lib/libcairo.2.dylib
-
 pyinstaller \
     --clean \
     --hidden-import=six \
@@ -24,9 +22,16 @@ pyinstaller \
     --strip \
     --add-binary "${CONDA_ROOT}/lib/libinchi.0.dylib:." \
     --add-binary "/opt/X11/lib/libcairo.2.dylib:." \
-    --add-binary "/opt/X11/lib/libpixman-1.0.dylib:." \
-    --add-binary "/opt/X11/lib/libfontconfig.1.dylib:." \
-    --add-binary "/opt/X11/lib/libfreetype.6.dylib:." \
+    --add-binary "/opt/X11/lib/libxcb-render.0.dylib:." \
     --add-binary "/opt/X11/lib/libxcb-shm.0.dylib:." \
+    --add-binary "/opt/X11/lib/libfontconfig.1.dylib:." \
+    --add-binary "/opt/X11/lib/libXrender.1.dylib:." \
+    --add-binary "/opt/X11/lib/libpng16.16.dylib:." \
+    --add-binary "/opt/X11/lib/libX11-xcb.1.dylib:." \
+    --add-binary "/opt/X11/lib/libfreetype.6.dylib:." \
+    --add-binary "/opt/X11/lib/libxcb.1.dylib:." \
+    --add-binary "/opt/X11/lib/libX11.6.dylib:." \
+    --add-binary "/opt/X11/lib/libpixman-1.0.dylib:." \
+    --add-binary "/opt/X11/lib/libXext.6.dylib:." \
     --additional-hooks-dir=. \
     -n oddt_cli --onefile ${CONDA_ROOT}/bin/oddt_cli
