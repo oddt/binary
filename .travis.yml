@@ -27,7 +27,7 @@ before_install:
     - conda install -q six
     - conda install -q -c mwojcikowski openbabel
     - conda install -q -c rdkit rdkit
-    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then conda install -q -c RMG cairocffi; fi
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install upx; fi
     # temp
     - conda install -q nomkl numpy scipy scikit-learn joblib
     - conda remove -q mkl
