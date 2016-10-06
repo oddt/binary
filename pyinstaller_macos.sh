@@ -1,6 +1,8 @@
 #!/bin/bash
 export CONDA_ROOT="$HOME/miniconda/envs/oddt_env/"
 
+pyi-bindepend /opt/X11/lib/libcairo.2.dylib
+
 pyinstaller \
     --clean \
     --hidden-import=six \
