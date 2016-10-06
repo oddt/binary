@@ -19,8 +19,8 @@ pyinstaller \
     --add-binary "${CONDA_ROOT}/lib/openbabel/2.4.0/smilesformat.so:." \
     --runtime-hook pyi_rth_obdata.py \
     --runtime-hook pyi_rth_rdkit.py \
-    --add-data=${CONDA_ROOT}/lib/python2.7/site-packages/oddt/scoring/functions/RFScore/*.csv:oddt/scoring/functions/RFScore/ \
-    --add-data=${CONDA_ROOT}/lib/python2.7/site-packages/oddt/scoring/functions/NNScore/*.csv:oddt/scoring/functions/NNScore/ \
+    --add-data=${CONDA_ROOT}/lib/python${CONDA_PY}/site-packages/oddt/scoring/functions/RFScore/*.csv:oddt/scoring/functions/RFScore/ \
+    --add-data=${CONDA_ROOT}/lib/python${CONDA_PY}/site-packages/oddt/scoring/functions/NNScore/*.csv:oddt/scoring/functions/NNScore/ \
     --nowindow \
     --strip \
     --add-binary "${CONDA_ROOT}/lib/libinchi.so:." \
