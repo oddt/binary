@@ -2,6 +2,7 @@
 export CONDA_ROOT="$HOME/miniconda/envs/oddt_env/"
 
 cp /usr/local/Cellar/upx/3.91_1/bin/upx .
+./upx --help
 
 pyinstaller \
     --clean \
