@@ -82,16 +82,16 @@ test_script:
         --hidden-import=six ^
         --hidden-import=compiledtrees ^
         --runtime-hook pyi_rth_obdata.py ^
-        --add-binary "%CONDA_ROOT%\Library\bin\mkl_avx.dll;." ^
-        --add-binary "%CONDA_ROOT%\Library\bin\formats_*.obf;." ^
-        --add-binary "%CONDA_ROOT%\Library\bin\plugin_*.obf;." ^
-        --add-data "%CONDA_ROOT%\share\openbabel\*;data" ^
-        --add-data "%CONDA_ROOT%\Lib\site-packages\oddt\scoring\functions\RFScore\*.csv;oddt\scoring\functions\RFScore" ^
+        --add-binary "%CONDA_PREFIX%\Library\bin\mkl_avx.dll;." ^
+        --add-binary "%CONDA_PREFIX%\Library\bin\formats_*.obf;." ^
+        --add-binary "%CONDA_PREFIX%\Library\bin\plugin_*.obf;." ^
+        --add-data "%CONDA_PREFIX%\share\openbabel\*;data" ^
+        --add-data "%CONDA_PREFIX%\Lib\site-packages\oddt\scoring\functions\RFScore\*.csv;oddt\scoring\functions\RFScore" ^
         --exclude-module tcl ^
         --exclude-module Tkinter ^
         --upx-dir . ^
         --nowindow ^
-        -y -n oddt_cli --onefile %CONDA_ROOT%\Scripts\oddt_cli'
+        -y -n oddt_cli --onefile %CONDA_PREFIX%\Scripts\oddt_cli'
   - deactivate
   - dist\oddt_cli.exe --help
   - dist\oddt_cli.exe --toolkit ob test\test_10.mol2 -osmi
