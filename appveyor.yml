@@ -55,7 +55,7 @@ install:
     - python -c "import sys; print(sys.executable)"
     - python -c "import sys; print(sys.prefix)"
     - conda create --yes --name oddt_env python=%PYTHON_VERSION%
-    - source activate oddt_env
+    - activate oddt_env
     - conda install -q six
     - conda install -q -c conda-forge mingwpy
     - conda install -q -c mwojcikowski openbabel
@@ -92,7 +92,7 @@ test_script:
         --upx-dir . ^
         --nowindow ^
         -y -n oddt_cli --onefile %CONDA_ROOT%\Scripts\oddt_cli'
-  - source deactivate
+  - deactivate
   - dist\oddt_cli.exe --help
   - dist\oddt_cli.exe --toolkit ob test\test_10.mol2 -osmi
   - dist\oddt_cli.exe --toolkit rdk test\test_10.mol2 -osmi
