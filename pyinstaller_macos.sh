@@ -1,9 +1,6 @@
 #!/bin/bash
 export CONDA_ROOT="$HOME/miniconda/envs/oddt_env/"
 
-cp /usr/local/Cellar/upx/3.91_1/bin/upx .
-./upx --help
-
 pyinstaller \
     --clean \
     --hidden-import=six \
@@ -27,7 +24,6 @@ pyinstaller \
     --strip \
     --add-binary "${CONDA_ROOT}/lib/libinchi.0.dylib:." \
     --add-binary "${CONDA_ROOT}/lib/libmkl_avx.dylib:." \
-    --add-binary "${CONDA_ROOT}/lib/libmkl_def.dylib:." \
     --add-binary "/opt/X11/lib/libcairo.2.dylib:." \
     --add-binary "/opt/X11/lib/libxcb-render.0.dylib:." \
     --add-binary "/opt/X11/lib/libxcb-shm.0.dylib:." \
