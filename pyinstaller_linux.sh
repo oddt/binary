@@ -3,7 +3,7 @@ export CONDA_ROOT="$HOME/miniconda/envs/oddt_env/"
 
 pyinstaller \
     --clean \
-    --additional-hooks-dir=.
+    --additional-hooks-dir=. \
     --hidden-import=six \
     --hidden-import=sklearn.tree._utils \
     --hidden-import=compiledtrees \
