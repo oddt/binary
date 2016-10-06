@@ -75,6 +75,7 @@ build: false
 
 test_script:
   - 'pyinstaller --clean ^
+        --additional-hooks-dir=.
         --hidden-import="sklearn.tree._utils" ^
         --hidden-import=six ^
         --hidden-import=compiledtrees ^
