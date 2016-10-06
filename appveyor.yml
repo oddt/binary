@@ -87,7 +87,7 @@ test_script:
         --add-binary "%CONDA_PREFIX%\Library\bin\formats_*.obf;." ^
         --add-binary "%CONDA_PREFIX%\Library\bin\plugin_*.obf;." ^
         --add-data "%CONDA_PREFIX%\share\openbabel\*;data" ^
-        --add-data "%CONDA_PREFIX%\Library\share\RDKit\Data\*:rdkit\Data" ^
+        --add-data "%CONDA_PREFIX%\Library\share\RDKit\Data\*;rdkit\Data" ^
         --add-data "%CONDA_PREFIX%\Lib\site-packages\oddt\scoring\functions\RFScore\*.csv;oddt\scoring\functions\RFScore" ^
         --exclude-module tcl ^
         --exclude-module Tkinter ^
