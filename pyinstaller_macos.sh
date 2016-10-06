@@ -1,7 +1,7 @@
 #!/bin/bash
 export CONDA_ROOT="$HOME/miniconda/envs/oddt_env/"
 
-pyi-bindepend /opt/X11/lib/libxcb-shm.0.dylib
+find /usr/local/Cellar/upx/3.91_1 -type f
 
 pyinstaller \
     --clean \
