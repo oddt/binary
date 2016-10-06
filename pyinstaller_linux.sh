@@ -24,5 +24,4 @@ pyinstaller \
     --strip \
     --add-binary "${CONDA_ROOT}/lib/libinchi.so:." \
     --add-binary "${CONDA_ROOT}/lib/libmkl_avx.so:." \
-    --add-binary "${CONDA_ROOT}/lib/libmkl_def.so:." \
     -n oddt_cli --onefile ${CONDA_ROOT}/bin/oddt_cli
