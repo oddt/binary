@@ -92,7 +92,7 @@ test_script:
         --add-data "%CONDA_PREFIX%\Lib\site-packages\oddt\scoring\functions\RFScore\*.csv;oddt\scoring\functions\RFScore" ^
         --exclude-module tcl ^
         --exclude-module Tkinter ^
-        --upx-dir . ^
+        --noupx ^
         --nowindow ^
         -y -n oddt_cli --onefile %CONDA_PREFIX%\Scripts\oddt_cli'
   - deactivate
