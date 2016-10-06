@@ -1,6 +1,8 @@
 #!/bin/bash
 export CONDA_ROOT="$HOME/miniconda/envs/oddt_env/"
 
+pyi-bindepend /opt/X11/lib/libxcb-shm.0.dylib
+
 pyinstaller \
     --clean \
     --hidden-import=six \
@@ -33,5 +35,6 @@ pyinstaller \
     --add-binary "/opt/X11/lib/libX11.6.dylib:." \
     --add-binary "/opt/X11/lib/libpixman-1.0.dylib:." \
     --add-binary "/opt/X11/lib/libXext.6.dylib:." \
+    --add-binary "/opt/X11/lib/libXau.6.dylib:." \
     --additional-hooks-dir=. \
     -n oddt_cli --onefile ${CONDA_ROOT}/bin/oddt_cli
