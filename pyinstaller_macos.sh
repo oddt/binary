@@ -1,6 +1,8 @@
 #!/bin/bash
 export CONDA_ROOT="$HOME/miniconda/envs/oddt_env/"
 
+cp /usr/local/Cellar/upx/3.91_1/bin/upx .
+
 pyinstaller \
     --clean \
     --hidden-import=six \
@@ -36,6 +38,6 @@ pyinstaller \
     --add-binary "/opt/X11/lib/libXau.6.dylib:." \
     --add-binary "/opt/X11/lib/libXdmcp.6.dylib:." \
     --add-binary "/opt/X11/lib/libxcb.1.dylib:." \
-    --upx "/usr/local/Cellar/upx/3.91_1/bin/upx" \
+    --upx-dir . \
     --additional-hooks-dir=. \
     -n oddt_cli --onefile ${CONDA_ROOT}/bin/oddt_cli
