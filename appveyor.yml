@@ -81,6 +81,7 @@ test_script:
         --hidden-import="sklearn.tree._utils" ^
         --hidden-import=six ^
         --hidden-import=compiledtrees ^
+        --hidden-import=rdkit ^
         --runtime-hook pyi_rth_obdata.py ^
         --add-binary "%CONDA_PREFIX%\Library\bin\mkl_avx.dll;." ^
         --add-binary "%CONDA_PREFIX%\Library\bin\formats_*.obf;." ^
