@@ -38,6 +38,7 @@ before_install:
 install:
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./pyinstaller_linux.sh; else ./pyinstaller_macos.sh; fi;
     - ls -lnh dist/
+    - source deactivate
 
 script:
     - dist/oddt_cli --help
