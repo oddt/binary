@@ -29,8 +29,8 @@ before_install:
     - conda install -q -c rdkit rdkit
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install upx; fi
     # temp
-    - conda install -q nomkl numpy scipy scikit-learn joblib
-    - conda remove -q mkl
+    - conda install -q numpy scipy scikit-learn joblib
+    # - conda remove -q mkl
     - pip install --no-deps git+https://github.com/oddt/oddt.git
     - pip install git+https://github.com/pyinstaller/pyinstaller.git@feb0d271263ca884b91033fd588b79fadf3a3a7f
     - pip install git+https://github.com/ajtulloch/sklearn-compiledtrees.git
