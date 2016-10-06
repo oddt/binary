@@ -10,12 +10,14 @@ pyinstaller \
     --exclude-module tcl \
     --exclude-module Tkinter \
     --add-data "${CONDA_ROOT}/share/openbabel/2.4.0/*:data/" \
+    --add-data "${CONDA_ROOT}/share/RDKit/Data/*:rdkit/Data" \
     --add-binary "${CONDA_ROOT}/lib/openbabel/2.4.0/mdlformat.so:." \
     --add-binary "${CONDA_ROOT}/lib/openbabel/2.4.0/mol2format.so:." \
     --add-binary "${CONDA_ROOT}/lib/openbabel/2.4.0/pdbformat.so:." \
     --add-binary "${CONDA_ROOT}/lib/openbabel/2.4.0/pdbqtformat.so:." \
     --add-binary "${CONDA_ROOT}/lib/openbabel/2.4.0/smilesformat.so:." \
     --runtime-hook pyi_rth_obdata.py \
+    --runtime-hook pyi_rth_rdkit.py \
     --add-data=${CONDA_ROOT}/lib/python2.7/site-packages/oddt/scoring/functions/RFScore/*.csv:oddt/scoring/functions/RFScore/ \
     --add-data=${CONDA_ROOT}/lib/python2.7/site-packages/oddt/scoring/functions/NNScore/*.csv:oddt/scoring/functions/NNScore/ \
     --nowindow \
