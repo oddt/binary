@@ -41,7 +41,7 @@ before_install:
 
 install:
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./pyinstaller_linux.sh; else ./pyinstaller_macos.sh; fi;
-    - ls -lnh dist/
+    - ls -lh dist/
     - source deactivate
 
 script:
