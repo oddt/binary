@@ -10,13 +10,13 @@ pyinstaller \
     --hidden-import=rdkit \
     --exclude-module tcl \
     --exclude-module Tkinter \
-    --add-data "${CONDA_ROOT}/share/openbabel/2.4.0/*:data/" \
+    --add-data "${CONDA_ROOT}/share/openbabel/*/*:data/" \
     --add-data "${CONDA_ROOT}/share/RDKit/Data/*:rdkit/Data" \
-    --add-binary "${CONDA_ROOT}/lib/openbabel/2.4.0/mdlformat.so:." \
-    --add-binary "${CONDA_ROOT}/lib/openbabel/2.4.0/mol2format.so:." \
-    --add-binary "${CONDA_ROOT}/lib/openbabel/2.4.0/pdbformat.so:." \
-    --add-binary "${CONDA_ROOT}/lib/openbabel/2.4.0/pdbqtformat.so:." \
-    --add-binary "${CONDA_ROOT}/lib/openbabel/2.4.0/smilesformat.so:." \
+    --add-binary "${CONDA_ROOT}/lib/openbabel/*/mdlformat.so:." \
+    --add-binary "${CONDA_ROOT}/lib/openbabel/*/mol2format.so:." \
+    --add-binary "${CONDA_ROOT}/lib/openbabel/*/pdbformat.so:." \
+    --add-binary "${CONDA_ROOT}/lib/openbabel/*/pdbqtformat.so:." \
+    --add-binary "${CONDA_ROOT}/lib/openbabel/*/smilesformat.so:." \
     --runtime-hook pyi_rth_obdata.py \
     --runtime-hook pyi_rth_rdkit.py \
     --add-data=${CONDA_ROOT}/lib/python${CONDA_PY}/site-packages/oddt/scoring/functions/RFScore/*.csv:oddt/scoring/functions/RFScore/ \
