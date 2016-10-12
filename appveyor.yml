@@ -70,7 +70,7 @@ install:
     - python -c "import PyInstaller;print(PyInstaller.__file__)"
     - del /F %CONDA_PREFIX%\Lib\site-packages\PyInstaller\hooks\hook-numpy.core.py
     # compiledtrees
-    - pip install git+https://github.com/ajtulloch/sklearn-compiledtrees.git
+    - pip install git+https://github.com/mwojcikowski/sklearn-compiledtrees.git@windows-compilation
     # - git clone https://github.com/ajtulloch/sklearn-compiledtrees.git
     # - cd sklearn-compiledtrees
     # - python setup.py build_ext --compiler=mingw --inplace
