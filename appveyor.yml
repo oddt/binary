@@ -49,7 +49,7 @@ install:
     - set "PATH=%CONDA_ROOT%;%CONDA_ROOT%\Scripts;%CONDA_ROOT%\Library\bin;%PATH%"
     - set "PATH=C:\MinGW\bin;%PATH%"
     - mingw-get update
-    - mingw-get install mingw-g++
+    - mingw-get install gcc g++
     - conda config --set always_yes yes
     - conda update -q conda
     - conda info
