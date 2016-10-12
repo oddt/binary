@@ -27,7 +27,7 @@ before_install:
     # - conda env update --name oddt_env --file environment.yml
     - source activate oddt_env
     - conda install -q six
-    - conda install -q -c mwojcikowski openbabel
+    - conda install -q -c openbabel openbabel
     - conda install -q -c rdkit rdkit
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install upx; fi
     # temp

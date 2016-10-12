@@ -59,7 +59,7 @@ install:
     - activate oddt_env
     - conda install -q six
     #- conda install -q -c conda-forge mingwpy
-    - conda install -q -c mwojcikowski openbabel
+    - conda install -q -c openbabel openbabel
     - conda install -q -c rdkit rdkit
     # temp
     - conda install -q numpy scipy scikit-learn joblib
@@ -70,7 +70,7 @@ install:
     - python -c "import PyInstaller;print(PyInstaller.__file__)"
     - del /F %CONDA_PREFIX%\Lib\site-packages\PyInstaller\hooks\hook-numpy.core.py
     # compiledtrees
-    - pip install --global-option --compiler=mingw git+https://github.com/ajtulloch/sklearn-compiledtrees.git
+    - pip install git+https://github.com/ajtulloch/sklearn-compiledtrees.git
     # - git clone https://github.com/ajtulloch/sklearn-compiledtrees.git
     # - cd sklearn-compiledtrees
     # - python setup.py build_ext --compiler=mingw --inplace
