@@ -47,6 +47,7 @@ install:
     # These are already installed on appveyor.  Update them.
     - set "CONDA_ROOT=C:\Miniconda%BASE_PYTHON_VERSION%%ARCH_LABEL%"
     - set "PATH=%CONDA_ROOT%;%CONDA_ROOT%\Scripts;%CONDA_ROOT%\Library\bin;%PATH%"
+    - set "PATH=C:\MinGW\bin;%PATH%"
     - conda config --set always_yes yes
     - conda update -q conda
     - conda info
@@ -57,7 +58,7 @@ install:
     - conda create --yes --name oddt_env python=%PYTHON_VERSION%
     - activate oddt_env
     - conda install -q six
-    - conda install -q -c conda-forge mingwpy
+    #- conda install -q -c conda-forge mingwpy
     - conda install -q -c mwojcikowski openbabel
     - conda install -q -c rdkit rdkit
     # temp
@@ -69,11 +70,11 @@ install:
     - python -c "import PyInstaller;print(PyInstaller.__file__)"
     - del /F %CONDA_PREFIX%\Lib\site-packages\PyInstaller\hooks\hook-numpy.core.py
     # compiledtrees
-    #- pip install --global-option --compiler=mingw git+https://github.com/ajtulloch/sklearn-compiledtrees.git
-    - git clone https://github.com/ajtulloch/sklearn-compiledtrees.git
-    - cd sklearn-compiledtrees
-    - python setup.py build_ext --compiler=mingw --inplace
-    - python setup.py install
+    - pip install --global-option --compiler=mingw git+https://github.com/ajtulloch/sklearn-compiledtrees.git
+    # - git clone https://github.com/ajtulloch/sklearn-compiledtrees.git
+    # - cd sklearn-compiledtrees
+    # - python setup.py build_ext --compiler=mingw --inplace
+    # - python setup.py install
     - curl -L -o upx.zip http://libgd.blob.core.windows.net/upx/upx391w.zip && 7z e upx.zip *.exe -r
 
 
