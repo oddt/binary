@@ -70,11 +70,11 @@ install:
     - python -c "import PyInstaller;print(PyInstaller.__file__)"
     - del /F %CONDA_PREFIX%\Lib\site-packages\PyInstaller\hooks\hook-numpy.core.py
     # compiledtrees
-    - pip install git+https://github.com/mwojcikowski/sklearn-compiledtrees.git@windows-compilation
-    # - git clone https://github.com/ajtulloch/sklearn-compiledtrees.git
-    # - cd sklearn-compiledtrees
-    # - python setup.py build_ext --compiler=mingw --inplace
-    # - python setup.py install
+    # - pip install git+https://github.com/mwojcikowski/sklearn-compiledtrees.git@windows-compilation
+    - git clone -b windows-compilation https://github.com/mwojcikowski/sklearn-compiledtrees.git
+    - cd sklearn-compiledtrees
+    - python setup.py build_ext --inplace --compiler=msvc
+    - python setup.py install
     - curl -L -o upx.zip http://libgd.blob.core.windows.net/upx/upx391w.zip && 7z e upx.zip *.exe -r
 
 
