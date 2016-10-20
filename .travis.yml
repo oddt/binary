@@ -55,5 +55,5 @@ script:
     - time dist/oddt_cli --score rfscore --receptor test/test_10.mol2 test/test_10.mol2 -ocsv
 
 after_success:
-    - zip -r oddt_cli_v${ODDT_VER}_${TRAVIS_OS_NAME}_${CONDA_PY}.zip dist/oddt_cli
+    - zip -j -r oddt_cli_v${ODDT_VER}_${TRAVIS_OS_NAME}_${CONDA_PY}.zip dist/oddt_cli
     - "curl --ftp-create-dirs -T oddt_cli_v${ODDT_VER}_${TRAVIS_OS_NAME}_${CONDA_PY}.zip -u $FTP_USER:$FTP_PASSWORD ftp://wojcikowski.pl"
