@@ -1,0 +1,18 @@
+{
+    "package": {
+        "name": "oddt_cli",
+        "repo": "oddt_binary",
+        "licenses": ["BSD"],
+        "vcs_url": "https://github.com/oddt/oddt.git"
+    },
+    "version": {
+        "name": "0.2",
+        "vcs_tag": "0.2",
+        "attributes": [{"name": "system", "values" : ["linux"], "type": "string"},
+                       {"name": "python", "values" : ["3.5"], "type": "string"},
+                       {"name": "arch", "values" : ["x64"], "type": "string"}],
+        "gpgSign": true
+    },
+    "files": [{"includePattern": "dist/oddt_cli", "uploadPattern": "0.2/oddt_cli_linux_py35/"}],
+    "publish": false
+}
