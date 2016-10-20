@@ -14,12 +14,12 @@ addons:
     packages:
     - upx-ucl
 deploy:
-    provider: releases
-    api_key:
-        secure: Kcodkh9Ct9JXYMBijEitax8sI06ysk0TOgX7XFpB0PqMOsC6OFHxIL7G7Dr5aONYmXYxPsbK4U0JiQ+9WqdjKLtNZalxGZzThmUWmORmXdgmG1WEtNjWtMNIRadccbhjvChUuc2RCzYgP2mIJ/IoqcKvOmt2a2A1TbOnYVEfSyWQwXbupIMUfuAiehsCX5AQfnvPdwL85cezE6O6FzvuXUAXyvIzmJhNuUwTY/oFVoXAmOfmU+YUPc7hnQvpACRxNPNfFWBLffcahYHUGXrzkw2ZhGyEji5dLG6ENt/h/vMXFX1MdW1ERZHhxYYy36LedFKNQpFckQxMtoAqgQc+qmljibNKyCq48/zSq/wMMqePjz0e2vxE0ZlWohCkErKusCELdusTK7MIJ93iwnaAGTp9DTLZxntTHqJkveLxMcpgE5WafbtAoe+YUOPGCLyfAB7yZ6AGxLS0g+XHfA7VzIfnLFl/HfVxYF8wBTMG4RIyYZwbsp1z4WEuaavyJnLJBNr7igNdXlrO+TQejK5pFt1TIhVjf1LiOw+WY6lIatKTzbl6ymCz9xWMg9FsCiMCfRKRh5rst4pBfDcVPCVGBMYwSMBnKkx8HpOsW+1qY+QtSQWGi6sops7e5uTKl2dBY5BpYCdotsgJkkXTxNbrS8cxeLwuXUT5/pHVkC4qtJA=
-    file: dist/oddt_cli
-    on:
-        repo: oddt/binary
+    provider: bintray
+    file: "oddt_cli_*.zip"
+    user: "mwojcikowski"
+    key:
+        secure: pP9+5n1YFLuCInQIP2MPwRq3wRd/9gOgndR/KjKo9bhtT3jNKdHvqbjUiyLx0NKS7jZArVsQrtKx0HD7ej5H2NM+WgJeQ7zse05N7P3fNkV8RwfiaVCemP4gh9vdkQCr1GubERMnje2NVMV5Ti0BPX53AOa0zGTHLCV77HIF5hjVf9KbwDzwdXkLaKylVkU9vgBVMrxvA4R//58yFwM/WGtPDuZo/l8oOwx8Qy5rWUjiRMhQwhD+T2q2jHRDcSFXueZ/4VKEx0gwCaxT1xwRl5bG0Qgu7XOLx0Abg9MXB8HCMDfIneyA5vwN8tU9q+WYPzqvD9PCAEBtSHDj5k1CDAikLOz1XFvQy/1HGXqhNuuOK20v6xinj7aY5Z8DKwABRMXsEt7A3iF7YBhRHLVNaGTGviKgtcyPkKUO3zPr58GPYKjI3sgNr5PX+0pYVyi0lHRTJsBO2tV4tf0P7iVnp1oGKbgGbbmHx+DMHKfSJ0+/VT6j7luL5Y7XT9inTTnGTPhoF4zUTfFYdgn5ImfQaEG8vH+8PCGSKfZaR9FQSP4+mXRrFX6vM0zhBlogPi0D0OjTPIyOuVcPajz/cmq54GsXcT8yjXJE/dINd/S5g+tyoWK+qkE6o6L+F+cKcX3XPWbm2zUxRyr9gDof+q84LfQd/BAPyZKRDj7L8O1u+cA=
+
 before_install:
     - ulimit -n 2048
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then CONDA_FLAVOUR='Linux'; else CONDA_FLAVOUR='MacOSX'; fi;
@@ -55,3 +55,6 @@ script:
     - dist/oddt_cli --toolkit ob test/test_10.mol2 -osmi
     - dist/oddt_cli --toolkit rdk test/test_10.mol2 -osmi
     - time dist/oddt_cli --score rfscore --receptor test/test_10.mol2 test/test_10.mol2 -ocsv
+
+after_script:
+    - zip -r oddt_cli_${TRAVIS_OS_NAME}_${CONDA_PY}.zip dist/oddt_cli
