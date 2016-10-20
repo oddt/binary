@@ -16,12 +16,6 @@ addons:
   apt:
     packages:
     - upx-ucl
-deploy:
-    provider: bintray
-    file: bintray/${TRAVIS_OS_NAME}_py${CONDA_PY}.json
-    user: "mwojcikowski"
-    key:
-        secure: pP9+5n1YFLuCInQIP2MPwRq3wRd/9gOgndR/KjKo9bhtT3jNKdHvqbjUiyLx0NKS7jZArVsQrtKx0HD7ej5H2NM+WgJeQ7zse05N7P3fNkV8RwfiaVCemP4gh9vdkQCr1GubERMnje2NVMV5Ti0BPX53AOa0zGTHLCV77HIF5hjVf9KbwDzwdXkLaKylVkU9vgBVMrxvA4R//58yFwM/WGtPDuZo/l8oOwx8Qy5rWUjiRMhQwhD+T2q2jHRDcSFXueZ/4VKEx0gwCaxT1xwRl5bG0Qgu7XOLx0Abg9MXB8HCMDfIneyA5vwN8tU9q+WYPzqvD9PCAEBtSHDj5k1CDAikLOz1XFvQy/1HGXqhNuuOK20v6xinj7aY5Z8DKwABRMXsEt7A3iF7YBhRHLVNaGTGviKgtcyPkKUO3zPr58GPYKjI3sgNr5PX+0pYVyi0lHRTJsBO2tV4tf0P7iVnp1oGKbgGbbmHx+DMHKfSJ0+/VT6j7luL5Y7XT9inTTnGTPhoF4zUTfFYdgn5ImfQaEG8vH+8PCGSKfZaR9FQSP4+mXRrFX6vM0zhBlogPi0D0OjTPIyOuVcPajz/cmq54GsXcT8yjXJE/dINd/S5g+tyoWK+qkE6o6L+F+cKcX3XPWbm2zUxRyr9gDof+q84LfQd/BAPyZKRDj7L8O1u+cA=
 
 before_install:
     - ulimit -n 2048
@@ -63,4 +57,3 @@ after_success:
     - export ODDT_VER=`python -c "from __future__ import print_function; print(oddt.__version__)"`
     - zip -r oddt_cli_v${ODDT_VER}_${TRAVIS_OS_NAME}_${CONDA_PY}.zip dist/oddt_cli
     - "curl --ftp-create-dirs -T oddt_cli_v${ODDT_VER}_${TRAVIS_OS_NAME}_${CONDA_PY}.zip -u $FTP_USER:$FTP_PASSWORD ftp://fokus.ibb.waw.pl"
-    
