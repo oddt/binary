@@ -3,7 +3,7 @@
         "name": "oddt_cli_osx_py27",
         "repo": "oddt_binary",
         "licenses": ["BSD"],
-        "vcs_url": "https://github.com/oddt/oddt.git",
+        "vcs_url": "https://github.com/oddt/oddt.git"
     },
     "version": {
         "name": "0.2",
