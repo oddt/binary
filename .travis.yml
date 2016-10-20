@@ -37,6 +37,7 @@ before_install:
     - conda install -q numpy scipy scikit-learn joblib
     # - conda remove -q mkl
     - pip install --no-deps git+https://github.com/oddt/oddt.git
+    - export ODDT_VER=`python -c "from __future__ import print_function; print(oddt.__version__)"`
     - pip install git+https://github.com/pyinstaller/pyinstaller.git@feb0d271263ca884b91033fd588b79fadf3a3a7f
     # Remove buggy numpy hook instead of @feb0d271263ca884b91033fd588b79fadf3a3a7f
     #- rm -f ${CONDA_PREFIX}/lib/python${CONDA_PY}/site-packages/PyInstaller/hooks/hook-numpy.core.py
@@ -54,6 +55,5 @@ script:
     - time dist/oddt_cli --score rfscore --receptor test/test_10.mol2 test/test_10.mol2 -ocsv
 
 after_success:
-    - export ODDT_VER=`python -c "from __future__ import print_function; print(oddt.__version__)"`
     - zip -r oddt_cli_v${ODDT_VER}_${TRAVIS_OS_NAME}_${CONDA_PY}.zip dist/oddt_cli
     - "curl --ftp-create-dirs -T oddt_cli_v${ODDT_VER}_${TRAVIS_OS_NAME}_${CONDA_PY}.zip -u $FTP_USER:$FTP_PASSWORD ftp://fokus.ibb.waw.pl"
