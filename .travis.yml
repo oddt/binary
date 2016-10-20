@@ -9,6 +9,9 @@ env:
   matrix:
   - CONDA_PY=2.7
   - CONDA_PY=3.5
+  global:
+  - secure: "Dc1rw/fpT3W1GA99AYuD+43f0V5XQFtvxIgLzGwa1/b2dsLnZAlLq55a7UqTlefxipbxaE4q/Pd0dBoGZelGGBwWF4RpE5CfnhOyvAO2q1Jg9eKyslbCliuM8nnp5bVtQbqqR4UFpZsco39ULW8Hi+Sr4OIT+IqHtq0+PPv8bXtFDCZsTisFHpuUqtmrvYRaoeS03jpUHagNxVMDOJB3J9kAiMeDNNfJPbQv6fz84RSosWoc4WC9TMRvz3WApAe8NOZ5gO5dhoPIqrVAQhOQ6FbvwBxB2G8sBtJ6iR9oG8tb0tDq/IwM8UixK7HlzVSHP2veMUshG2DRfGdhNzG9GAMZ4sqtt3GI0VxGzEhtoSKhCvTIJ3hIcDuJkLMneMZf6s+NjTO5dAemstQtGAXy49DkewFxExINfSfN7oGHkVpZ4A4NyLbPw4SCqKnVqBr1hw6X2ZCZykrVfPMxURHdurXqCspTtcPwTudOTxWYx0RlWF03HyJ99LzY9wDmV4jPpKBLKEtHDdDQCxmxE2p0XYY0HsEsihFLtuc+YLH/3lzr9dLqo/TxX2mazsYhPV6sc1KPF8hF9B4iNogJeihdeMu5lg162+qXbOLTvq5ZeyTMw3gc5Qpxc9OZ0k+z3iwfZifsRhFJut0ZHzRBSq2ELj5ymBtbmWdBaSvcYXSBGUo="
+  - secure: "2ms3MiNHHKJQ5QV6TqWxPLi8rxnnuxXQOTLJkcS+VL1qvJxhpEXH5iiAcrRVHpZrFxDf4WVYumX6yU2yhCrxD8MefqNRO0ihW162qpp74OBAWed7hOzaBx+2ssgt2Kz2hifjDyUhEAAeggOGribixjUosdKTC2xcVHN59ZIMuSbx82aWcUadqYZlFQUub0hDKokAbJ2ZRK/h6ssHsZ1bOeyn7el7UaW3V2JPY4FhnUjk6KoOMMdATD6E9xMpuvkX8F3KnyAzpqg+tqifrN7mgdtNq7JTI4dRJwONhNZWAAeIV+adN3r+ACuD6Yniy0X2fXb9BZj0YPTrJXQL1nu0tAGUuMdTf48AXwmpnQqVyEY2ZcqoYX1VfYsRW8zT0K+/0tawH/dySBPMWcMyiYht+dTaT5BLnAo8xADCn3p5kUSveCBW8E2XJYhTZtBcUg3S5ivpCwRK8A4ofFmjU58NlSM1vHRenVZN8yuiAawxxfMFt2+4u3DyKwR6N7MhAqWY2VTTa5mI6LacYUwqxudiuhxIWdYBaxDBtOv8p3uX1YYY1i/OVGtPD9aGxGV2/do/M8LTOd2TCakcVsmOg6UN1J9FW7Z9MPBANFXI3jeOv5kSSxhJKRlYqtPPjSZ1/7Pt3DzxoKYaM6nzc3zFt2ApvbGOpLnFs5+Yvau0Kz3V16g="
 addons:
   apt:
     packages:
@@ -56,5 +59,8 @@ script:
     - dist/oddt_cli --toolkit rdk test/test_10.mol2 -osmi
     - time dist/oddt_cli --score rfscore --receptor test/test_10.mol2 test/test_10.mol2 -ocsv
 
-# after_script:
-#     - zip -r oddt_cli_${TRAVIS_OS_NAME}_${CONDA_PY}.zip dist/oddt_cli
+after_success:
+    - export ODDT_VER=`python -c "from __future__ import print_function; print(oddt.__version__)"`
+    - zip -r oddt_cli_v${ODDT_VER}_${TRAVIS_OS_NAME}_${CONDA_PY}.zip dist/oddt_cli
+    - "curl --ftp-create-dirs -T oddt_cli_v${ODDT_VER}_${TRAVIS_OS_NAME}_${CONDA_PY}.zip -u $FTP_USER:$FTP_PASSWORD ftp://fokus.ibb.waw.pl"
+    
