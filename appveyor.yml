@@ -34,10 +34,10 @@ environment:
     #  PYTHON_ARCH: "32"
     #  CONDA_PY: "35"
 
-    - PYTHON: "C:\\Python35_64"
-      PYTHON_VERSION: "3.5"
-      PYTHON_ARCH: "64"
-      CONDA_PY: "35"
+    # - PYTHON: "C:\\Python35_64"
+    #   PYTHON_VERSION: "3.5"
+    #   PYTHON_ARCH: "64"
+    #   CONDA_PY: "35"
 
 install:
     # https://www.appveyor.com/docs/installed-software#python
@@ -46,10 +46,8 @@ install:
     - if "%PYTHON_ARCH%" == "64" set "ARCH_LABEL=-x64"
     # These are already installed on appveyor.  Update them.
     - set "CONDA_ROOT=C:\Miniconda%BASE_PYTHON_VERSION%%ARCH_LABEL%"
-    - set "PATH=%CONDA_ROOT%;%CONDA_ROOT%\Scripts;%CONDA_ROOT%\Library\bin;%PATH%"
-    - set "PATH=C:\MinGW\bin;%PATH%"
-    - mingw-get update
-    - mingw-get install gcc g++
+    - set "PATH=%CONDA_ROOT%;%CONDA_ROOT%\Scripts;%CONDA_ROOT%\Library\bin;"
+    # - set "PATH=C:\MinGW\bin;%PATH%"
     - conda config --set always_yes yes
     - conda update -q conda
     - conda info
@@ -60,7 +58,7 @@ install:
     - conda create --yes --name oddt_env python=%PYTHON_VERSION%
     - activate oddt_env
     - conda install -q six
-    #- conda install -q -c conda-forge mingwpy
+    - conda install -q -c conda-forge mingwpy
     - conda install -q -c openbabel openbabel
     - conda install -q -c rdkit rdkit
     # temp
