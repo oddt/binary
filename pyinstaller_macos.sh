@@ -24,7 +24,7 @@ pyinstaller \
     --nowindow \
     --strip \
     --add-binary "${CONDA_ROOT}/lib/libinchi.0.dylib:." \
-    --add-binary "${CONDA_ROOT}/lib/libmkl_avx.dylib:." \
+    --add-binary "${CONDA_ROOT}/lib/libmkl_mc.dylib:." \
     --add-binary "/opt/X11/lib/libcairo.2.dylib:." \
     --add-binary "/opt/X11/lib/libxcb-render.0.dylib:." \
     --add-binary "/opt/X11/lib/libxcb-shm.0.dylib:." \
