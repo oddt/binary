@@ -1,3 +1,4 @@
+os: Visual Studio 2015
 environment:
   # See README for information on the token
   ANACONDA_TOKEN:
@@ -46,7 +47,7 @@ install:
     - if "%PYTHON_ARCH%" == "64" set "ARCH_LABEL=-x64"
     # These are already installed on appveyor.  Update them.
     - set "CONDA_ROOT=C:\Miniconda%BASE_PYTHON_VERSION%%ARCH_LABEL%"
-    - set "PATH=%CONDA_ROOT%;%CONDA_ROOT%\Scripts;%CONDA_ROOT%\Library\bin;"
+    - set "PATH=%CONDA_ROOT%;%CONDA_ROOT%\Scripts;%CONDA_ROOT%\Library\bin;%PATH%"
     # - set "PATH=C:\MinGW\bin;%PATH%"
     - conda config --set always_yes yes
     - conda update -q conda
@@ -65,6 +66,11 @@ install:
     - conda install -q -c openbabel openbabel
     - conda install -q -c rdkit rdkit
     - pip install --no-deps git+https://github.com/oddt/oddt.git@experimental-windows
+    - set ODDT_VER=
+    - FOR /F "tokens=* USEBACKQ" %%F IN (`python -c "from __future__ import print_function; import oddt; print(oddt.__version__)`) DO (
+      SET ODDT_VER=%%F
+      )
+      ECHO %ODDT_VER%
 
     # Use commit pre-MKL
     - pip install git+https://github.com/pyinstaller/pyinstaller.git@feb0d271263ca884b91033fd588b79fadf3a3a7f
@@ -113,6 +119,18 @@ test_script:
   - dist\oddt_cli.exe --toolkit ob test\test_10.mol2 -osmi
   - dist\oddt_cli.exe --toolkit rdk test\test_10.mol2 -osmi
   - dist\oddt_cli.exe --score rfscore --receptor test\test_10.mol2 test\test_10.mol2 -ocsv
+  - 7z a oddt_cli_v%ODDT_VER%_win_py%PYTHON_VERSION%.zip dist\oddt_cli.exe
 artifacts:
   # Archive the generated conda package in the ci.appveyor.com build report.
   - path: .\dist\oddt_cli.exe
+
+deploy:
+  provider: FTP
+  protocol: ftps
+  host: wojcikowski.pl
+  username:
+    secure: wuDqH0Ne8+H5LLA13XOnJc2JhOOAHuCJD0hq8n1Sm0c=
+  password:
+    secure: Xonq2cmbnVHxH70z4WD+BDiq/WClXiOYbuKSzaaLzts=
+  folder:
+  artifact: oddt_cli_v%ODDT_VER%_win_py%PYTHON_VERSION%.zip         # upload all NuGet packages to release assets
