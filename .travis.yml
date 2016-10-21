@@ -47,6 +47,7 @@ install:
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./pyinstaller_linux.sh; else ./pyinstaller_macos.sh; fi;
     - ls -lh dist/
     - source deactivate
+    - rm -rf $HOME/miniconda
 
 script:
     - dist/oddt_cli --help
