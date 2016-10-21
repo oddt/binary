@@ -57,18 +57,21 @@ install:
     - python -c "import sys; print(sys.prefix)"
     - conda create --yes --name oddt_env python=%PYTHON_VERSION%
     - activate oddt_env
-    - conda install -q six
+    - conda install -q  git
     - conda install -q -c conda-forge mingwpy
+
+    # ODDT Dependencies
+    - conda install -q numpy scipy scikit-learn joblib six
     - conda install -q -c openbabel openbabel
     - conda install -q -c rdkit rdkit
-    # temp
-    - conda install -q numpy scipy scikit-learn joblib
     - pip install --no-deps git+https://github.com/oddt/oddt.git@experimental-windows
+
     # Use commit pre-MKL
     - pip install git+https://github.com/pyinstaller/pyinstaller.git@feb0d271263ca884b91033fd588b79fadf3a3a7f
     # Remove buggy numpy hook instead of @feb0d271263ca884b91033fd588b79fadf3a3a7f
     - python -c "import PyInstaller;print(PyInstaller.__file__)"
     #- del /F %CONDA_PREFIX%\Lib\site-packages\PyInstaller\hooks\hook-numpy.core.py
+
     # compiledtrees
     # - pip install git+https://github.com/mwojcikowski/sklearn-compiledtrees.git@windows-compilation
     - git clone -b windows-compilation https://github.com/mwojcikowski/sklearn-compiledtrees.git
@@ -79,6 +82,8 @@ install:
     - python setup.py build_ext --inplace
     - python setup.py install
     - cd ..
+
+    # UPXs
     - curl -L -o upx.zip http://libgd.blob.core.windows.net/upx/upx391w.zip && 7z e upx.zip *.exe -r
 
 build: false
